@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+	<application android:icon="@mipmap/ic_launcher"
+				 android:label="@string/app_name"
+				 android:roundIcon="@mipmap/ic_launcher_round"
+				 android:supportsRtl="true"
+				 android:theme="@style/Theme.EInkManager">
+		<activity android:name=".ui.MainActivity"
+				  android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".ui.AppProfileActivity"
+				  android:exported="false" />
+		<activity android:name=".ui.NewAppProfileChooserActivity"
+				  android:exported="false" />
+		<activity android:name=".ui.DragSettingsActivity"
+				  android:exported="false" />
+		<activity android:name=".ui.SavedColorMapEditActivity"
+				  android:exported="false" />
+		<activity android:name=".ui.SavedColorMapsActivity"
+				  android:exported="false" />
+		<activity android:name=".ui.AdvancedSettingsActivity"
+				  android:exported="false" />
+		<activity android:name=".ui.QuickSettingsDialogActivity"
+				  android:excludeFromRecents="true"
+				  android:exported="false"
+				  android:noHistory="true"
+				  android:theme="@style/Theme.EInkManager.Dialog" />
+		<activity android:name=".ui.ColorMapChooserDialogActivity"
+				  android:exported="false"
+				  android:theme="@style/Theme.EInkManager.Dialog" />
+
+		<service android:name=".ApplySettingsService"
+				 android:directBootAware="true"
+				 android:exported="false"
+				 android:foregroundServiceType="shortService" />
+
+		<receiver android:name=".BootCompletedReceiver"
+				  android:directBootAware="true"
+				  android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+
+		<service android:name=".EInkAccessibilityService"
+				 android:directBootAware="true"
+				 android:exported="true"
+				 android:label="@string/app_name"
+				 android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+			<intent-filter>
+				<action android:name="android.accessibilityservice.AccessibilityService" />
+			</intent-filter>
+			<meta-data android:name="android.accessibilityservice"
+					   android:resource="@xml/accessibility_service_config" />
+		</service>
+
+		<service android:name=".QuickSettingsService"
+				 android:directBootAware="true"
+				 android:exported="true"
+				 android:icon="@drawable/quick_settings_icon"
+				 android:label="@string/app_name"
+				 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+			<intent-filter>
+				<action android:name="android.service.quicksettings.action.QS_TILE" />
+			</intent-filter>
+		</service>
+	</application>
+</manifest>

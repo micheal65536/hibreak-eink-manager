@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:app="http://schemas.android.com/apk/res-auto"
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:orientation="horizontal">
+	<com.google.android.material.button.MaterialButton android:id="@+id/decrement"
+													   style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+													   android:layout_width="36dp"
+													   android:layout_height="match_parent"
+													   android:insetTop="0dp"
+													   android:insetBottom="0dp"
+													   android:paddingHorizontal="0dp"
+													   android:text="-"
+													   app:shapeAppearanceOverlay="@style/ShapeAppearance.EInkManager.NumericInput.StartButton" />
+	<androidx.appcompat.widget.AppCompatEditText android:id="@+id/value"
+												 android:layout_width="48dp"
+												 android:layout_height="match_parent"
+												 android:background="@drawable/numeric_input_edit_text_background"
+												 android:gravity="center"
+												 android:imeOptions="actionDone"
+												 android:inputType="number"
+												 android:maxLength="2"
+												 android:maxLines="1"
+												 android:textAlignment="center"
+												 tools:text="20" />
+	<com.google.android.material.button.MaterialButton android:id="@+id/increment"
+													   style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+													   android:layout_width="36dp"
+													   android:layout_height="match_parent"
+													   android:insetTop="0dp"
+													   android:insetBottom="0dp"
+													   android:paddingHorizontal="0dp"
+													   android:text="+"
+													   app:shapeAppearanceOverlay="@style/ShapeAppearance.EInkManager.NumericInput.EndButton" />
+</LinearLayout>

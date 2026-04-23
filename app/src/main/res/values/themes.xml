@@ -1,0 +1,35 @@
+<resources>
+	<style name="Theme.EInkManager"
+		   parent="Theme.MaterialComponents.Light.NoActionBar">
+		<item name="android:statusBarColor">#000000</item>
+
+		<item name="colorPrimary">#000000</item>
+		<item name="colorPrimaryVariant">#000000</item>
+		<item name="colorOnPrimary">#ffffff</item>
+		<item name="colorSecondary">#000000</item>
+		<item name="colorSecondaryVariant">#000000</item>
+		<item name="colorOnSecondary">#ffffff</item>
+	</style>
+
+	<style name="Theme.EInkManager.Dialog"
+		   parent="Theme.MaterialComponents.Light.Dialog.MinWidth">
+		<item name="windowNoTitle">true</item>
+
+		<item name="colorPrimary">#000000</item>
+		<item name="colorPrimaryVariant">#000000</item>
+		<item name="colorOnPrimary">#ffffff</item>
+		<item name="colorSecondary">#000000</item>
+		<item name="colorSecondaryVariant">#000000</item>
+		<item name="colorOnSecondary">#ffffff</item>
+	</style>
+
+	<style name="ThemeOverlay.EInkManager.OnPrimary"
+		   parent="">
+		<item name="colorPrimary">#ffffff</item>
+		<item name="colorPrimaryVariant">#ffffff</item>
+		<item name="colorOnPrimary">#000000</item>
+		<item name="colorSecondary">#ffffff</item>
+		<item name="colorSecondaryVariant">#ffffff</item>
+		<item name="colorOnSecondary">#000000</item>
+	</style>
+</resources>

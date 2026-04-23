@@ -1,0 +1,61 @@
+<resources>
+	<string name="app_name">E-Ink Manager</string>
+
+	<string name="service_apply_settings_notification_channel_name">Background tasks</string>
+	<string name="service_apply_settings_notification_text">Applying eink display settings</string>
+
+	<string name="refresh_mode_normal">Normal</string>
+	<string name="refresh_mode_fast">Fast</string>
+	<string name="refresh_mode_high_quality">Quality</string>
+	<string name="full_refresh_type_blank">Blank</string>
+	<string name="full_refresh_type_invert">Invert</string>
+	<string name="profile_setting_default">Default</string>
+	<string name="profile_setting_on">On</string>
+	<string name="profile_setting_off">Off</string>
+	<string name="color_map_red">Red</string>
+	<string name="color_map_green">Green</string>
+	<string name="color_map_blue">Blue</string>
+
+	<string name="add_new">Add new</string>
+	<string name="save">Save</string>
+	<string name="delete">Delete</string>
+	<string name="close">Close</string>
+	<string name="enabled">Enabled</string>
+	<string name="name">Name</string>
+	<string name="drag_settings">Drag sensitivity settings</string>
+	<string name="saved_color_maps">Saved color maps</string>
+	<string name="advanced_settings">Advanced settings</string>
+	<string name="more_settings">More settings</string>
+
+	<string name="enable_drag_mode_switch">Switch to fast mode when dragging</string>
+	<string name="enable_ime_mode_switch">Switch to fast mode when keyboard is open</string>
+	<string name="allow_drag_mode_during_ime">Allow drag mode while keyboard is open</string>
+	<string name="use_last_app_mode_in_system_ui">Use last app refresh mode in system UI</string>
+	<string name="manual_full_refresh_type">Manual full refresh type</string>
+	<string name="use_global_contrast_map">Change contrast</string>
+	<string name="use_global_contrast_map_in_high_quality_mode">Apply contrast changes in high qualtiy mode</string>
+	<string name="use_fast_mode_contrast_map">Adjust contrast in fast mode</string>
+	<string name="disable_global_contrast_map">Disable global contrast settings</string>
+	<string name="use_color_map">Apply color map</string>
+	<string name="forced_color_map_enable">Force the use of a specific color map</string>
+	<string name="forced_color_map_enable_with_name">Force the use of a specific color map: %1$s</string>
+	<string name="force_fast_mode">Force fast mode</string>
+	<string name="drag_start_delay_static">Drag start delay (stationary)</string>
+	<string name="drag_start_delay_moving">Drag start delay (after moving)</string>
+	<string name="drag_start_distance">Drag start move distance</string>
+	<string name="drag_end_delay">Drag end delay</string>
+	<string name="navbar_manual_full_refresh_delay">Navbar refresh button delay</string>
+	<string name="explicit_refresh_regular_post_delay">Explicit refresh post delay (regular)</string>
+	<string name="explicit_refresh_blank_post_delay">Explicit refresh post delay (blank)</string>
+	<string name="screen_power_off_delay">Screen power off delay</string>
+	<string name="vcom">VCOM</string>
+
+	<string name="tab_global_settings">Global</string>
+	<string name="tab_app_profiles">App profiles</string>
+
+	<string name="quick_settings_global_settings_heading">Global settings</string>
+	<string name="quick_settings_enable_app_profile">Enable per-app setting</string>
+	<string name="quick_settings_enable_app_profile_with_name">Enable per-app setting: %1$s</string>
+
+	<string name="saved_color_map_name_empty">Name cannot be empty</string>
+</resources>
