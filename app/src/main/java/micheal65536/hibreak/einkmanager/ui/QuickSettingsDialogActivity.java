@@ -94,10 +94,10 @@ public final class QuickSettingsDialogActivity extends AppCompatActivity
 			((Checkable) this.findViewById(R.id.app_profile_refresh_mode_normal)).setChecked(appProfile != null && appProfile.refreshMode == RefreshMode.NORMAL);
 			((Checkable) this.findViewById(R.id.app_profile_refresh_mode_fast)).setChecked(appProfile != null && appProfile.refreshMode == RefreshMode.FAST);
 			((Checkable) this.findViewById(R.id.app_profile_refresh_mode_high_quality)).setChecked(appProfile != null && appProfile.refreshMode == RefreshMode.HIGH_QUALITY);
-			this.findViewById(R.id.app_profile_refresh_mode_default).setEnabled(appProfile != null);
-			this.findViewById(R.id.app_profile_refresh_mode_normal).setEnabled(appProfile != null);
-			this.findViewById(R.id.app_profile_refresh_mode_fast).setEnabled(appProfile != null);
-			this.findViewById(R.id.app_profile_refresh_mode_high_quality).setEnabled(appProfile != null);
+			this.findViewById(R.id.app_profile_refresh_mode_default).setEnabled(appProfile != null && appProfile.enabled);
+			this.findViewById(R.id.app_profile_refresh_mode_normal).setEnabled(appProfile != null && appProfile.enabled);
+			this.findViewById(R.id.app_profile_refresh_mode_fast).setEnabled(appProfile != null && appProfile.enabled);
+			this.findViewById(R.id.app_profile_refresh_mode_high_quality).setEnabled(appProfile != null && appProfile.enabled);
 
 			this.findViewById(R.id.global_refresh_mode_normal).setEnabled(appProfile == null || !appProfile.enabled || appProfile.refreshMode == null);
 			this.findViewById(R.id.global_refresh_mode_fast).setEnabled(appProfile == null || !appProfile.enabled || appProfile.refreshMode == null);
