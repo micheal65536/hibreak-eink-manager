@@ -1,0 +1,358 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "34674b7ffcddebfd0afd7eb1328f6012",
+    "entities": [
+      {
+        "tableName": "globalSettings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `defaultRefreshMode` TEXT NOT NULL, `enableDragModeSwitch` INTEGER NOT NULL, `enableImeModeSwitch` INTEGER NOT NULL, `allowDragModeDuringIme` INTEGER NOT NULL, `useLastAppModeInSystemUI` INTEGER NOT NULL, `manualFullRefreshType` TEXT, `useGlobalContrastMap` INTEGER NOT NULL, `useGlobalContrastMapInHighQualityMode` INTEGER NOT NULL, `useFastModeContrastMap` INTEGER NOT NULL, `forcedColorMapId` INTEGER, `forceFastMode` INTEGER NOT NULL, `forceDisableColorMaps` INTEGER NOT NULL DEFAULT false, `globalContrastMap_min` INTEGER NOT NULL, `globalContrastMap_max` INTEGER NOT NULL, `fastModeContrastMap_min` INTEGER NOT NULL, `fastModeContrastMap_max` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`forcedColorMapId`) REFERENCES `colorMaps`(`id`) ON UPDATE CASCADE ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "defaultRefreshMode",
+            "columnName": "defaultRefreshMode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enableDragModeSwitch",
+            "columnName": "enableDragModeSwitch",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enableImeModeSwitch",
+            "columnName": "enableImeModeSwitch",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "allowDragModeDuringIme",
+            "columnName": "allowDragModeDuringIme",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useLastAppModeInSystemUI",
+            "columnName": "useLastAppModeInSystemUI",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "manualFullRefreshType",
+            "columnName": "manualFullRefreshType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "useGlobalContrastMap",
+            "columnName": "useGlobalContrastMap",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useGlobalContrastMapInHighQualityMode",
+            "columnName": "useGlobalContrastMapInHighQualityMode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useFastModeContrastMap",
+            "columnName": "useFastModeContrastMap",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "forcedColorMapId",
+            "columnName": "forcedColorMapId",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "forceFastMode",
+            "columnName": "forceFastMode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "forceDisableColorMaps",
+            "columnName": "forceDisableColorMaps",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "false"
+          },
+          {
+            "fieldPath": "globalContrastMap.min",
+            "columnName": "globalContrastMap_min",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "globalContrastMap.max",
+            "columnName": "globalContrastMap_max",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fastModeContrastMap.min",
+            "columnName": "fastModeContrastMap_min",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fastModeContrastMap.max",
+            "columnName": "fastModeContrastMap_max",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "colorMaps",
+            "onDelete": "SET NULL",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "forcedColorMapId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "appProfiles",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`appId` TEXT NOT NULL, `enabled` INTEGER NOT NULL, `refreshMode` TEXT, `enableDragModeSwitch` INTEGER, `enableImeModeSwitch` INTEGER, `disableGlobalContrastMap` INTEGER NOT NULL, `useColorMap` INTEGER NOT NULL, `colorMap_redMin` INTEGER NOT NULL, `colorMap_redMax` INTEGER NOT NULL, `colorMap_greenMin` INTEGER NOT NULL, `colorMap_greenMax` INTEGER NOT NULL, `colorMap_blueMin` INTEGER NOT NULL, `colorMap_blueMax` INTEGER NOT NULL, PRIMARY KEY(`appId`))",
+        "fields": [
+          {
+            "fieldPath": "appId",
+            "columnName": "appId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enabled",
+            "columnName": "enabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "refreshMode",
+            "columnName": "refreshMode",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "enableDragModeSwitch",
+            "columnName": "enableDragModeSwitch",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "enableImeModeSwitch",
+            "columnName": "enableImeModeSwitch",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "disableGlobalContrastMap",
+            "columnName": "disableGlobalContrastMap",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useColorMap",
+            "columnName": "useColorMap",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.redMin",
+            "columnName": "colorMap_redMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.redMax",
+            "columnName": "colorMap_redMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.greenMin",
+            "columnName": "colorMap_greenMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.greenMax",
+            "columnName": "colorMap_greenMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.blueMin",
+            "columnName": "colorMap_blueMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.blueMax",
+            "columnName": "colorMap_blueMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "appId"
+          ]
+        }
+      },
+      {
+        "tableName": "colorMaps",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `colorMap_redMin` INTEGER NOT NULL, `colorMap_redMax` INTEGER NOT NULL, `colorMap_greenMin` INTEGER NOT NULL, `colorMap_greenMax` INTEGER NOT NULL, `colorMap_blueMin` INTEGER NOT NULL, `colorMap_blueMax` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.redMin",
+            "columnName": "colorMap_redMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.redMax",
+            "columnName": "colorMap_redMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.greenMin",
+            "columnName": "colorMap_greenMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.greenMax",
+            "columnName": "colorMap_greenMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.blueMin",
+            "columnName": "colorMap_blueMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorMap.blueMax",
+            "columnName": "colorMap_blueMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "advancedSettings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `dragStartDelayStatic` INTEGER NOT NULL, `dragStartDelayMoving` INTEGER NOT NULL, `dragStartDistance` INTEGER NOT NULL, `dragEndDelay` INTEGER NOT NULL, `navbarManualFullRefreshDelay` INTEGER NOT NULL, `explicitRefreshRegularPostDelay` INTEGER NOT NULL, `explicitRefreshBlankPostDelay` INTEGER NOT NULL, `screenPowerOffDelay` INTEGER NOT NULL, `vcom` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dragStartDelayStatic",
+            "columnName": "dragStartDelayStatic",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dragStartDelayMoving",
+            "columnName": "dragStartDelayMoving",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dragStartDistance",
+            "columnName": "dragStartDistance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dragEndDelay",
+            "columnName": "dragEndDelay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "navbarManualFullRefreshDelay",
+            "columnName": "navbarManualFullRefreshDelay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "explicitRefreshRegularPostDelay",
+            "columnName": "explicitRefreshRegularPostDelay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "explicitRefreshBlankPostDelay",
+            "columnName": "explicitRefreshBlankPostDelay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "screenPowerOffDelay",
+            "columnName": "screenPowerOffDelay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vcom",
+            "columnName": "vcom",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '34674b7ffcddebfd0afd7eb1328f6012')"
+    ]
+  }
+}
