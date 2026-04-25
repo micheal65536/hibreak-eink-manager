@@ -40,6 +40,7 @@
 	<string name="forced_color_map_enable">Force the use of a specific color map</string>
 	<string name="forced_color_map_enable_with_name">Force the use of a specific color map: %1$s</string>
 	<string name="force_fast_mode">Force fast mode</string>
+	<string name="force_disable_color_maps">Force disable color maps</string>
 	<string name="drag_start_delay_static">Drag start delay (stationary)</string>
 	<string name="drag_start_delay_moving">Drag start delay (after moving)</string>
 	<string name="drag_start_distance">Drag start move distance</string>

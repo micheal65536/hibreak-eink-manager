@@ -2,11 +2,12 @@ package micheal65536.hibreak.einkmanager.data;
 
 import android.content.Context;
 
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {GlobalSettings.class, AppProfile.class, SavedColorMap.class, AdvancedSettings.class}, version = 1)
+@Database(entities = {GlobalSettings.class, AppProfile.class, SavedColorMap.class, AdvancedSettings.class}, version = 2, autoMigrations = {@AutoMigration(from = 1, to = 2)})
 public abstract class ProfilesDatabase extends RoomDatabase
 {
 	public abstract ProfilesDao dao();

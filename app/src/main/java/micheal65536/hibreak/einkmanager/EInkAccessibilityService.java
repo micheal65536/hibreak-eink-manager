@@ -300,7 +300,7 @@ public final class EInkAccessibilityService extends AccessibilityService
 		}
 
 		ContrastMap globalContrastMap = null;
-		boolean globalContrastMapEnabled = this.globalSettings.globalSettings.useGlobalContrastMap;
+		boolean globalContrastMapEnabled = this.globalSettings.globalSettings.useGlobalContrastMap && !this.globalSettings.globalSettings.forceDisableColorMaps;
 		boolean globalContrastMapDisabledByHighQualityMode = !this.globalSettings.globalSettings.useGlobalContrastMapInHighQualityMode && refreshMode == RefreshMode.HIGH_QUALITY;
 		boolean globalContrastMapDisabledByCurrentAppProfile = this.currentAppProfile != null && this.currentAppProfile.enabled && this.currentAppProfile.disableGlobalContrastMap;
 		if (globalContrastMapEnabled && !globalContrastMapDisabledByHighQualityMode && !globalContrastMapDisabledByCurrentAppProfile)
@@ -311,7 +311,7 @@ public final class EInkAccessibilityService extends AccessibilityService
 		ContrastMap fastModeContrastMap = null;
 		if (refreshMode == RefreshMode.FAST)
 		{
-			boolean fastModeContrastMapEnabled = this.globalSettings.globalSettings.useFastModeContrastMap;
+			boolean fastModeContrastMapEnabled = this.globalSettings.globalSettings.useFastModeContrastMap && !this.globalSettings.globalSettings.forceDisableColorMaps;
 			boolean fastModeContrastMapDisabledByCurrentAppProfile = this.currentAppProfile != null && this.currentAppProfile.enabled && this.currentAppProfile.refreshMode == RefreshMode.FAST && this.currentAppProfile.disableGlobalContrastMap;
 			if (fastModeContrastMapEnabled && !fastModeContrastMapDisabledByCurrentAppProfile)
 			{
@@ -319,7 +319,7 @@ public final class EInkAccessibilityService extends AccessibilityService
 			}
 		}
 
-		ColorMap appProfileColorMap = this.currentAppProfile != null && this.currentAppProfile.enabled && this.currentAppProfile.useColorMap ? this.currentAppProfile.colorMap : null;
+		ColorMap appProfileColorMap = this.currentAppProfile != null && this.currentAppProfile.enabled && this.currentAppProfile.useColorMap && !this.globalSettings.globalSettings.forceDisableColorMaps ? this.currentAppProfile.colorMap : null;
 
 		ColorMap forcedColorMap = this.globalSettings.globalSettings.forcedColorMapId != null && this.globalSettings.forcedColorMap != null ? this.globalSettings.forcedColorMap.colorMap : null;
 		if (forcedColorMap != null)

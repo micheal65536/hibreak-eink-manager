@@ -113,8 +113,8 @@ public final class ApplySettingsService extends Service
 						if (forceIfAccessibilityServiceIsRunning || !EInkAccessibilityService.isRunning())
 						{
 							RefreshMode refreshMode = globalSettings.globalSettings.forceFastMode ? RefreshMode.FAST : globalSettings.globalSettings.defaultRefreshMode;
-							ContrastMap globalContrastMap = globalSettings.globalSettings.useGlobalContrastMap && (refreshMode != RefreshMode.HIGH_QUALITY || globalSettings.globalSettings.useGlobalContrastMapInHighQualityMode) ? globalSettings.globalSettings.globalContrastMap : null;
-							ContrastMap fastModeContrastMap = refreshMode == RefreshMode.FAST && globalSettings.globalSettings.useFastModeContrastMap ? globalSettings.globalSettings.fastModeContrastMap : null;
+							ContrastMap globalContrastMap = !globalSettings.globalSettings.forceDisableColorMaps && globalSettings.globalSettings.useGlobalContrastMap && (refreshMode != RefreshMode.HIGH_QUALITY || globalSettings.globalSettings.useGlobalContrastMapInHighQualityMode) ? globalSettings.globalSettings.globalContrastMap : null;
+							ContrastMap fastModeContrastMap = refreshMode == RefreshMode.FAST && !globalSettings.globalSettings.forceDisableColorMaps && globalSettings.globalSettings.useFastModeContrastMap ? globalSettings.globalSettings.fastModeContrastMap : null;
 							ColorMap forcedColorMap = globalSettings.forcedColorMap != null ? globalSettings.forcedColorMap.colorMap : null;
 							EInkManager.setExplicitRefreshParamSwitchDelay(advancedSettings.explicitRefreshRegularPostDelay, advancedSettings.explicitRefreshBlankPostDelay);
 							EInkManager.applyRefreshModeAndColorMatrix(refreshMode, ColorMatrix.createColorMatrix(globalContrastMap, fastModeContrastMap, null, forcedColorMap), forceIfNoChanges);

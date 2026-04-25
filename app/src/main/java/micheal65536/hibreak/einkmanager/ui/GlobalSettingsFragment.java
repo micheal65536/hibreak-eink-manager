@@ -102,7 +102,7 @@ public final class GlobalSettingsFragment extends Fragment
 				GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 				if (globalSettings.defaultRefreshMode != RefreshMode.NORMAL)
 				{
-					this.dao.saveGlobalSettings(globalSettings.withDefaultRefreshMode(RefreshMode.NORMAL).withForcedMode(globalSettings.forcedColorMapId, false));
+					this.dao.saveGlobalSettings(globalSettings.withDefaultRefreshMode(RefreshMode.NORMAL).withForcedMode(globalSettings.forcedColorMapId, false, globalSettings.forceDisableColorMaps));
 				}
 			}
 		});
@@ -116,7 +116,7 @@ public final class GlobalSettingsFragment extends Fragment
 				GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 				if (globalSettings.defaultRefreshMode != RefreshMode.FAST)
 				{
-					this.dao.saveGlobalSettings(globalSettings.withDefaultRefreshMode(RefreshMode.FAST).withForcedMode(globalSettings.forcedColorMapId, false));
+					this.dao.saveGlobalSettings(globalSettings.withDefaultRefreshMode(RefreshMode.FAST).withForcedMode(globalSettings.forcedColorMapId, false, globalSettings.forceDisableColorMaps));
 				}
 			}
 		});
@@ -130,7 +130,7 @@ public final class GlobalSettingsFragment extends Fragment
 				GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 				if (globalSettings.defaultRefreshMode != RefreshMode.HIGH_QUALITY)
 				{
-					this.dao.saveGlobalSettings(globalSettings.withDefaultRefreshMode(RefreshMode.HIGH_QUALITY).withForcedMode(globalSettings.forcedColorMapId, false));
+					this.dao.saveGlobalSettings(globalSettings.withDefaultRefreshMode(RefreshMode.HIGH_QUALITY).withForcedMode(globalSettings.forcedColorMapId, false, globalSettings.forceDisableColorMaps));
 				}
 			}
 		});
@@ -140,7 +140,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.enableDragModeSwitch != checked)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withModeSwitching(checked, globalSettings.enableImeModeSwitch, globalSettings.allowDragModeDuringIme).withForcedMode(globalSettings.forcedColorMapId, false));
+				this.dao.saveGlobalSettings(globalSettings.withModeSwitching(checked, globalSettings.enableImeModeSwitch, globalSettings.allowDragModeDuringIme).withForcedMode(globalSettings.forcedColorMapId, false, globalSettings.forceDisableColorMaps));
 			}
 		});
 		((SwitchMaterial) view.findViewById(R.id.enable_ime_mode_switch)).setOnCheckedChangeListener((view1, checked) ->
@@ -148,7 +148,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.enableImeModeSwitch != checked)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withModeSwitching(globalSettings.enableDragModeSwitch, checked, globalSettings.allowDragModeDuringIme).withForcedMode(globalSettings.forcedColorMapId, false));
+				this.dao.saveGlobalSettings(globalSettings.withModeSwitching(globalSettings.enableDragModeSwitch, checked, globalSettings.allowDragModeDuringIme).withForcedMode(globalSettings.forcedColorMapId, false, globalSettings.forceDisableColorMaps));
 			}
 		});
 		((SwitchMaterial) view.findViewById(R.id.allow_drag_mode_during_ime)).setOnCheckedChangeListener((view1, checked) ->
@@ -205,7 +205,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.useGlobalContrastMap != checked)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(checked, globalSettings.useGlobalContrastMapInHighQualityMode, globalSettings.globalContrastMap).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(checked, globalSettings.useGlobalContrastMapInHighQualityMode, globalSettings.globalContrastMap).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 		((SwitchMaterial) view.findViewById(R.id.use_global_contrast_map_in_high_quality_mode)).setOnCheckedChangeListener((view1, checked) ->
@@ -213,7 +213,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.useGlobalContrastMapInHighQualityMode != checked)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(globalSettings.useGlobalContrastMap, checked, globalSettings.globalContrastMap).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(globalSettings.useGlobalContrastMap, checked, globalSettings.globalContrastMap).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 		NumericInput.setUpCallbacks(view.findViewById(R.id.global_contrast_map_min), 0, 100, 10, value ->
@@ -221,7 +221,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.globalContrastMap.min != value)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(globalSettings.useGlobalContrastMap, globalSettings.useGlobalContrastMapInHighQualityMode, new ContrastMap(value, globalSettings.globalContrastMap.max)).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(globalSettings.useGlobalContrastMap, globalSettings.useGlobalContrastMapInHighQualityMode, new ContrastMap(value, globalSettings.globalContrastMap.max)).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 		NumericInput.setUpCallbacks(view.findViewById(R.id.global_contrast_map_max), 0, 100, 10, value ->
@@ -229,7 +229,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.globalContrastMap.max != value)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(globalSettings.useGlobalContrastMap, globalSettings.useGlobalContrastMapInHighQualityMode, new ContrastMap(globalSettings.globalContrastMap.min, value)).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withGlobalContrastMap(globalSettings.useGlobalContrastMap, globalSettings.useGlobalContrastMapInHighQualityMode, new ContrastMap(globalSettings.globalContrastMap.min, value)).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 
@@ -238,7 +238,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.useFastModeContrastMap != checked)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withFastModeContrastMap(checked, globalSettings.fastModeContrastMap).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withFastModeContrastMap(checked, globalSettings.fastModeContrastMap).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 		NumericInput.setUpCallbacks(view.findViewById(R.id.fast_mode_contrast_map_min), 0, 100, 10, value ->
@@ -246,7 +246,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.fastModeContrastMap.min != value)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withFastModeContrastMap(globalSettings.useFastModeContrastMap, new ContrastMap(value, globalSettings.fastModeContrastMap.max)).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withFastModeContrastMap(globalSettings.useFastModeContrastMap, new ContrastMap(value, globalSettings.fastModeContrastMap.max)).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 		NumericInput.setUpCallbacks(view.findViewById(R.id.fast_mode_contrast_map_max), 0, 100, 10, value ->
@@ -254,7 +254,7 @@ public final class GlobalSettingsFragment extends Fragment
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.fastModeContrastMap.max != value)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withFastModeContrastMap(globalSettings.useFastModeContrastMap, new ContrastMap(globalSettings.fastModeContrastMap.min, value)).withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withFastModeContrastMap(globalSettings.useFastModeContrastMap, new ContrastMap(globalSettings.fastModeContrastMap.min, value)).withForcedMode(null, globalSettings.forceFastMode, false));
 			}
 		});
 
@@ -269,7 +269,7 @@ public final class GlobalSettingsFragment extends Fragment
 			}
 			else if (!checked && globalSettings.forcedColorMapId != null)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withForcedMode(null, globalSettings.forceFastMode, globalSettings.forceDisableColorMaps));
 			}
 		});
 		((Button) view.findViewById(R.id.saved_color_maps)).setOnClickListener(view1 ->
@@ -300,7 +300,7 @@ public final class GlobalSettingsFragment extends Fragment
 				GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 				if (globalSettings.forcedColorMapId == null || globalSettings.forcedColorMapId != id)
 				{
-					this.dao.saveGlobalSettings(globalSettings.withForcedMode(id, globalSettings.forceFastMode));
+					this.dao.saveGlobalSettings(globalSettings.withForcedMode(id, globalSettings.forceFastMode, globalSettings.forceDisableColorMaps));
 				}
 			}
 		}

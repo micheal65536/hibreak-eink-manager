@@ -76,6 +76,7 @@ public final class QuickSettingsDialogActivity extends AppCompatActivity
 			{
 				((SwitchMaterial) this.findViewById(R.id.forced_color_map_enable)).setText(R.string.forced_color_map_enable);
 			}
+			((Checkable) this.findViewById(R.id.force_disable_color_maps)).setChecked(globalSettings.globalSettings.forceDisableColorMaps);
 
 			((Checkable) this.findViewById(R.id.global_refresh_mode_normal)).setChecked(globalSettings.globalSettings.defaultRefreshMode == RefreshMode.NORMAL);
 			((Checkable) this.findViewById(R.id.global_refresh_mode_fast)).setChecked(globalSettings.globalSettings.defaultRefreshMode == RefreshMode.FAST);
@@ -111,7 +112,7 @@ public final class QuickSettingsDialogActivity extends AppCompatActivity
 			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 			if (globalSettings.forceFastMode != checked)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withForcedMode(globalSettings.forcedColorMapId, checked));
+				this.dao.saveGlobalSettings(globalSettings.withForcedMode(globalSettings.forcedColorMapId, checked, globalSettings.forceDisableColorMaps));
 			}
 		});
 		((SwitchMaterial) this.findViewById(R.id.forced_color_map_enable)).setOnCheckedChangeListener((view1, checked) ->
@@ -125,7 +126,15 @@ public final class QuickSettingsDialogActivity extends AppCompatActivity
 			}
 			else if (!checked && globalSettings.forcedColorMapId != null)
 			{
-				this.dao.saveGlobalSettings(globalSettings.withForcedMode(null, globalSettings.forceFastMode));
+				this.dao.saveGlobalSettings(globalSettings.withForcedMode(null, globalSettings.forceFastMode, globalSettings.forceDisableColorMaps));
+			}
+		});
+		((SwitchMaterial) this.findViewById(R.id.force_disable_color_maps)).setOnCheckedChangeListener((view1, checked) ->
+		{
+			GlobalSettings globalSettings = this.getCurrentGlobalSettings();
+			if (globalSettings.forceDisableColorMaps != checked)
+			{
+				this.dao.saveGlobalSettings(globalSettings.withForcedMode(globalSettings.forcedColorMapId, globalSettings.forceFastMode, checked));
 			}
 		});
 
@@ -318,7 +327,7 @@ public final class QuickSettingsDialogActivity extends AppCompatActivity
 				GlobalSettings globalSettings = this.getCurrentGlobalSettings();
 				if (globalSettings.forcedColorMapId == null || globalSettings.forcedColorMapId != id)
 				{
-					this.dao.saveGlobalSettings(globalSettings.withForcedMode(id, globalSettings.forceFastMode));
+					this.dao.saveGlobalSettings(globalSettings.withForcedMode(id, globalSettings.forceFastMode, globalSettings.forceDisableColorMaps));
 				}
 			}
 		}

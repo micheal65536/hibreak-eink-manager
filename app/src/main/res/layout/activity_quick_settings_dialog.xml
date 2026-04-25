@@ -20,6 +20,12 @@
 																   android:maxLines="1"
 																   android:text="@string/forced_color_map_enable"
 																   app:layout_constraintTop_toBottomOf="@id/force_fast_mode" />
+		<com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/force_disable_color_maps"
+																   android:layout_width="match_parent"
+																   android:layout_height="wrap_content"
+																   android:layout_marginHorizontal="16dp"
+																   android:text="@string/force_disable_color_maps"
+																   app:layout_constraintTop_toBottomOf="@id/forced_color_map_enable" />
 
 		<com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/enable_app_profile"
 																   android:layout_width="match_parent"
@@ -29,7 +35,7 @@
 																   android:ellipsize="end"
 																   android:maxLines="1"
 																   android:text="@string/quick_settings_enable_app_profile"
-																   app:layout_constraintTop_toBottomOf="@id/forced_color_map_enable" />
+																   app:layout_constraintTop_toBottomOf="@id/force_disable_color_maps" />
 		<com.google.android.material.button.MaterialButtonGroup android:id="@+id/app_profile_refresh_mode"
 																android:layout_width="wrap_content"
 																android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package micheal65536.hibreak.einkmanager.data;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -36,8 +37,10 @@ public class GlobalSettings
 	@Nullable
 	public final Long forcedColorMapId;
 	public final boolean forceFastMode;
+	@ColumnInfo(defaultValue = "false")
+	public final boolean forceDisableColorMaps;
 
-	public GlobalSettings(@NonNull RefreshMode defaultRefreshMode, boolean enableDragModeSwitch, boolean enableImeModeSwitch, boolean allowDragModeDuringIme, boolean useLastAppModeInSystemUI, FullRefreshType manualFullRefreshType, boolean useGlobalContrastMap, boolean useGlobalContrastMapInHighQualityMode, @NonNull ContrastMap globalContrastMap, boolean useFastModeContrastMap, @NonNull ContrastMap fastModeContrastMap, @Nullable Long forcedColorMapId, boolean forceFastMode)
+	public GlobalSettings(@NonNull RefreshMode defaultRefreshMode, boolean enableDragModeSwitch, boolean enableImeModeSwitch, boolean allowDragModeDuringIme, boolean useLastAppModeInSystemUI, FullRefreshType manualFullRefreshType, boolean useGlobalContrastMap, boolean useGlobalContrastMapInHighQualityMode, @NonNull ContrastMap globalContrastMap, boolean useFastModeContrastMap, @NonNull ContrastMap fastModeContrastMap, @Nullable Long forcedColorMapId, boolean forceFastMode, boolean forceDisableColorMaps)
 	{
 		this.defaultRefreshMode = defaultRefreshMode;
 		this.enableDragModeSwitch = enableDragModeSwitch;
@@ -52,6 +55,7 @@ public class GlobalSettings
 		this.fastModeContrastMap = fastModeContrastMap;
 		this.forcedColorMapId = forcedColorMapId;
 		this.forceFastMode = forceFastMode;
+		this.forceDisableColorMaps = forceDisableColorMaps;
 	}
 
 	@NonNull
@@ -62,7 +66,7 @@ public class GlobalSettings
 				this.manualFullRefreshType,
 				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
 				this.useFastModeContrastMap, this.fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
+				this.forcedColorMapId, this.forceFastMode, this.forceDisableColorMaps
 		);
 	}
 
@@ -74,7 +78,7 @@ public class GlobalSettings
 				this.manualFullRefreshType,
 				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
 				this.useFastModeContrastMap, this.fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
+				this.forcedColorMapId, this.forceFastMode, this.forceDisableColorMaps
 		);
 	}
 
@@ -86,7 +90,7 @@ public class GlobalSettings
 				this.manualFullRefreshType,
 				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
 				this.useFastModeContrastMap, this.fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
+				this.forcedColorMapId, this.forceFastMode, this.forceDisableColorMaps
 		);
 	}
 
@@ -98,19 +102,7 @@ public class GlobalSettings
 				manualFullRefreshType,
 				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
 				this.useFastModeContrastMap, this.fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
-		);
-	}
-
-	@NonNull
-	public GlobalSettings withDragTriggerParams(int dragStartDelayStatic, int dragStartDelayMoving, int dragStartDistance, int dragEndDelay)
-	{
-		return new GlobalSettings(
-				this.defaultRefreshMode, this.enableDragModeSwitch, this.enableImeModeSwitch, this.allowDragModeDuringIme, this.useLastAppModeInSystemUI,
-				this.manualFullRefreshType,
-				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
-				this.useFastModeContrastMap, this.fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
+				this.forcedColorMapId, this.forceFastMode, this.forceDisableColorMaps
 		);
 	}
 
@@ -122,7 +114,7 @@ public class GlobalSettings
 				this.manualFullRefreshType,
 				useGlobalContrastMap, useGlobalContrastMapInHighQualityMode, globalContrastMap,
 				this.useFastModeContrastMap, this.fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
+				this.forcedColorMapId, this.forceFastMode, this.forceDisableColorMaps
 		);
 	}
 
@@ -134,19 +126,19 @@ public class GlobalSettings
 				this.manualFullRefreshType,
 				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
 				useFastModeContrastMap, fastModeContrastMap,
-				this.forcedColorMapId, this.forceFastMode
+				this.forcedColorMapId, this.forceFastMode, this.forceDisableColorMaps
 		);
 	}
 
 	@NonNull
-	public GlobalSettings withForcedMode(@Nullable Long forcedColorMapId, boolean forceFastMode)
+	public GlobalSettings withForcedMode(@Nullable Long forcedColorMapId, boolean forceFastMode, boolean forceDisableColorMaps)
 	{
 		return new GlobalSettings(
 				this.defaultRefreshMode, this.enableDragModeSwitch, this.enableImeModeSwitch, this.allowDragModeDuringIme, this.useLastAppModeInSystemUI,
 				this.manualFullRefreshType,
 				this.useGlobalContrastMap, this.useGlobalContrastMapInHighQualityMode, this.globalContrastMap,
 				this.useFastModeContrastMap, this.fastModeContrastMap,
-				forcedColorMapId, forceFastMode
+				forcedColorMapId, forceFastMode, forceDisableColorMaps
 		);
 	}
 
@@ -155,6 +147,6 @@ public class GlobalSettings
 			FullRefreshType.INVERT,
 			false, false, new ContrastMap(0, 100),
 			false, new ContrastMap(0, 100),
-			null, false
+			null, false, false
 	);
 }
